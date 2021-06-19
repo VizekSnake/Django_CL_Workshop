@@ -30,7 +30,6 @@
         <ul>
             <li><a href="/crr">Avaibility</a></li>
             <li><a href="#cta">Reserve</a></li>
-            <li><a href="#cta">Add Room</a></li>
         </ul>
     </nav>
 
@@ -40,23 +39,8 @@
         <!-- First Section -->
         <section id="first" class="main special">
             <header class="major">
-                <h2>Edit details of conference room {{room.room_name}}</h2>
+                <h2>Add new conference room</h2>
             </header>
-            <table>
-                <thead>
-                <tr>
-                    <th>ROOM</th>
-                    <th>CAPACITY</th>
-                    <th>IS PROJECTOR AVAIBLE?</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{{ room.room_name }}</td>
-                    <td>{{ room.capacity }}</td>
-                    <td>{{ projector }}</td>
-                </tr>
-            </table>
             <form method="post" action="#">
                 {% csrf_token %}
                 <div class="row gtr-uniform">

@@ -6,12 +6,12 @@
 -->
 <html>
 <head>
+    <title>Room</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <link rel="stylesheet" href="{% static 'conroom_reserve_app/assets/css/main.css' %}"/>
     <noscript>
         <link rel="stylesheet" href="{% static 'conroom_reserve_app/assets/css/noscript.css' %}"/>
-        <title>Room</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     </noscript>
 </head>
 <body class="is-preload">
@@ -29,23 +29,23 @@
     <nav id="nav">
         <ul>
             <li><a href="/crr">Avaibility</a></li>
-			<li><a href="#cta">Reserve</a></li>
+            <li><a href="#cta">Reserve</a></li>
             <li><a href="#cta">Add Room</a></li>
         </ul>
     </nav>
 
     <!-- Main -->
-    <div id="main">
+    <section id="main">
 
         <!-- First Section -->
         <section id="first" class="main special">
             <header class="major">
-                <h2>Details</h2>
+                <h2>Details of conference room {{room.room_name}}</h2>
             </header>
             <table>
                 <thead>
                 <tr>
-					<th>ROOM</th>
+                    <th>ROOM</th>
                     <th>CAPACITY</th>
                     <th>IS PROJECTOR AVAIBLE?</th>
                 </tr>
@@ -62,19 +62,21 @@
                     <p><a href="generic.html" class="button primary">DELETE</a></p>
                 </li>
                 <li>
-                    <p><a href="generic.html" class="button primary">EDIT</a></p>
+                    <p><a href="edit/{{ room.id }}" class="button primary">EDIT</a></p>
                 </li>
                 <li>
                     <p><a href="generic.html" class="button">RESERVE</a></p>
                 </li>
             </ul>
         </section>
-    </div>
 
-    <!-- Footer -->
-    <footer id="footer">
-        <p class="copyright">&copy; Movie_rent</p>
-    </footer>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer id="footer">
+    <p class="copyright">&copy; CONFRoom_rent</p>
+</footer>
 
 </div>
 

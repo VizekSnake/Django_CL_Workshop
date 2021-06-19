@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'conroom_reserve_app/assets/css/main.css' %}"/>
     <noscript>
         <link rel="stylesheet" href="{% static 'conroom_reserve_app/assets/css/noscript.css' %}"/>
-        <title>Movie rooms</title>
+        <title>Room</title>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     </noscript>
@@ -28,8 +28,7 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="#first">Avaibility</a></li>
-			<li><a href="#cta">Reserve</a></li>
+            <li><a href="/crr">Avaibility</a></li>
             <li><a href="#cta">Add Room</a></li>
         </ul>
     </nav>
@@ -40,40 +39,40 @@
         <!-- First Section -->
         <section id="first" class="main special">
             <header class="major">
-                <h2>Availability</h2>
-                <h3>For : {{today}}</h3>
+                <h2>Details</h2>
             </header>
             <table>
                 <thead>
                 <tr>
-					<th>CONFERENCE ROOM ID</th>
-                    {% for day in reserv_days %}
-                    <th>{{day}}</th>
-                    {%endfor%}
+					<th>ROOM</th>
+                    <th>CAPACITY</th>
+                    <th>IS PROJECTOR AVAIBLE?</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for room in rooms %}
                 <tr>
-                    <td><a href="/crr/{{ room.id }}">{{ room.room_name }}</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="edit/{{ room.id }}">EDIT</a></td>
-                    <td><a href="delete/{{ room.id }}">DELETE</a></td>
+                    <td>{{ room.room_name }}</td>
+                    <td>{{ room.capacity }}</td>
+                    <td>{{ projector }}</td>
                 </tr>
-                {%endfor%}
             </table>
+            <ul class="features">
+                <li>
+                    <p><a href="generic.html" class="button primary">DELETE</a></p>
+                </li>
+                <li>
+                    <p><a href="generic.html" class="button primary">EDIT</a></p>
+                </li>
+                <li>
+                    <p><a href="generic.html" class="button">RESERVE</a></p>
+                </li>
+            </ul>
         </section>
     </div>
 
     <!-- Footer -->
     <footer id="footer">
-        <p class="copyright">&copy; CONFRoom_rent</p>
+        <p class="copyright">&copy; Movie_rent</p>
     </footer>
 
 </div>

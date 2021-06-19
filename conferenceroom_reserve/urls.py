@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 
 from django.urls import path, re_path
-from conroom_reserve_app.views import main_conf_reserve, room_conf_reserve
+from conroom_reserve_app.views import main_conf_reserve, room_conf_detail, room_conf_edit
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('crr/', main_conf_reserve),
-    re_path(r'^crr/(?P<room_id>\d+)/?$', room_conf_reserve),
+    re_path(r'^crr/(?P<room_id>\d+)/?$', room_conf_detail),
+    re_path(r'^crr/edit/(?P<room_id>\d+)/?$', room_conf_edit),
 ]
