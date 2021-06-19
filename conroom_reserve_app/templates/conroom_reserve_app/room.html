@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'conroom_reserve_app/css/main.css' %}"/>
+    <noscript>
+        <link rel="stylesheet" href="{% static 'conroom_reserve_app/css/noscript.css' %}"/>
+        <title>Movie rooms</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/
+    </noscript>
+</head>
+<body class="is-preload">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1>ROOM RESERVATION</h1>
+        <p>just reserve it!</p>
+    </header>
+
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="#first">Avaibility</a></li>
+			<li><a href="#cta">Reserve</a></li>
+            <li><a href="#cta">Add</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- First Section -->
+        <section id="first" class="main special">
+            <header class="major">
+                <h2>Availability</h2>
+            </header>
+            <table>
+                <thead>
+                <tr>
+					<th>ROOM</th>
+                    <th>MONDAY</th>
+                    <th>THUSDAY</th>
+                    <th>WEDNESDAY</th>
+                    <th>THURSDAY</th>
+                    <th>FRIDAY</th>
+                    <th>SATURDAY</th>
+                    <th>SUNDAY</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for room in rooms %}
+                <tr>
+                    <td><a href="/crr/{{ room.id }}">{{ room.room_name }}</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="/crr/{{ room.id }}">EDIT</a></td>
+                    <td><a href="/crr/{{ room.id }}">DELETE</a></td>
+                </tr>
+                {%endfor%}
+            </table>
+            <ul class="features">
+                <li>
+                    <p><a href="generic.html" class="button primary">Learn More</a></p>
+                </li>
+                <li>
+                    <p><a href="generic.html" class="button primary">Learn More</a></p>
+                </li>
+                <li>
+                    <p><a href="generic.html" class="button">Learn More</a></p>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <p class="copyright">&copy; Movie_rent</p>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
