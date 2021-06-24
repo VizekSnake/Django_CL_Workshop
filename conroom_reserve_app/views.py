@@ -95,7 +95,7 @@ def room_reservation(request, room_id):
                       context={"room": room, 'today': today})
     if request.method == 'POST':
         room = Room.objects.get(pk=room_id)
-        r_comment = request.POST.get('comment')
+        r_comment = request.POST.get('r_comment')
         occupied_day = request.POST.get('occupied_day')
         occupied_day = datetime.strptime(occupied_day, '%Y-%m-%d')
         new_reservation = Reservation.objects.create(reservation_date=occupied_day, comment=r_comment, room_id=room)
