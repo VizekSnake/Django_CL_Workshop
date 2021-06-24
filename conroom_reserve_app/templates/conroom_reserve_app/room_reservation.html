@@ -18,64 +18,72 @@
 
 <!-- Wrapper -->
 <div id="wrapper">
-<!-- Header -->
-<header id="header" class="alt">
-    <h1>ROOM RESERVATION</h1>
-    <p>just reserve it!</p>
-</header>
+    <!-- Header -->
+    <header id="header" class="alt">
+        <h1>ROOM RESERVATION</h1>
+        <p>just reserve it!</p>
+    </header>
 
-<!-- Nav -->
-<nav id="nav">
-    <ul>
-        <li><a href="/crr">Avaibility</a></li>
-        <li><a href="#cta">Reserve</a></li>
-    </ul>
-</nav>
+    <!-- Nav -->
+    <nav id="nav">
+        <ul>
+            <li><a href="/crr">Avaibility</a></li>
+            <li><a href="#cta">Reserve</a></li>
+        </ul>
+    </nav>
 
-<!-- Main -->
-<section id="main">
+    <!-- Main -->
+    <section id="main">
 
-    <!-- First Section -->
-    <section id="first" class="main special">
-        <header class="major">
-            <h1>{{ exist }}</h1>
-            <h2>Add new reservation for room {{room.room_name}}</h2>
-        </header>
-        <table>
-            <thead>
-            <tr>
-                <th>ROOM</th>
-                <th>CAPACITY</th>
-                <th>IS PROJECTOR AVAIBLE?</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{ room.room_name }}</td>
-                <td>{{ room.capacity }}</td>
-                <td>{{ projector }}</td>
-            </tr>
-        </table>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="row gtr-uniform">
-                <div class="col-6 col-12-xsmall">
-                    <spacer>
-                    <input type="date" name="occupied_day" id="occupied_day"/>
-                    <div class="col-6 col-12-xsmall">
-                        <hr>
-                        <input type="text" name="r_comment" id="r_comment" placeholder="COMMENT TO RESERVATION"/>
-                    <hr>
-            <ul class="col-6 col-12-xsmall">
-                <input type="submit" value="Send Reservation" class="primary"></li>
-            </ul>
-                    </div>
-                </div>
+        <!-- First Section -->
+        <section id="first" class="main special">
+            <header class="major">
+                <h1>{{ exist }}</h1>
+                <h2>Add new reservation for room {{room.room_name}}</h2>
+            </header>
+            <table>
+                <thead>
+                <tr>
+                    <th>ROOM</th>
+                    <th>CAPACITY</th>
+                    <th>IS PROJECTOR AVAIBLE?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ room.room_name }}</td>
+                    <td>{{ room.capacity }}</td>
+                    <td>{{ projector }}</td>
+                </tr>
+            </table>
+            <div class="col-6 col-12-xsmall">
+                <h3>Recent reservations</h3>
+                {%for reservation in reservations%}
+                <ol>
+                    <li>{{reservation.room_id}} in {{reservation.reservation_date}} | COMMENTARY: {{reservation.comment}}</li>
+                </ol>
+                {%endfor%}
             </div>
-        </form>
-    </section>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <h3>Choose date</h3>
+                    <div class="col-6 col-12-xsmall">
+                        <input type="date" name="occupied_day" id="occupied_day"/>
+                        <hr>
+                        <h3>Add comment</h3>
+                        <input type="text" name="r_comment" id="r_comment"
+                               placeholder="COMMENT TO RESERVATION"/>
+                        <hr>
+                        <ul class="col-6 col-12-xsmall">
+                            <input type="submit" value="Send Reservation" class="primary"></li>
+                        </ul>
+                    </div>
+            </form>
+        </section>
 
-</section>
+
+    </section>
 </div>
 
 <!-- Footer -->

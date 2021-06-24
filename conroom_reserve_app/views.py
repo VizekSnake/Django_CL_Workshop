@@ -48,6 +48,10 @@ def room_conf_edit(request, room_id):
     room = Room.objects.get(pk=room_id)
     projector = 'YES' if room.projector_avaibility else 'NO'
     if request.method == 'GET':
+        if room.projector_avaibility:
+            projector = 'YES'
+        else:
+            projector = 'NO'
         return render(request, 'conroom_reserve_app/room_edit.html', context={'room': room, 'projector': projector})
     elif request.method == 'POST':
         r_name = request.POST.get('r_name')
@@ -89,10 +93,16 @@ def room_conf_delete(request, room_id):
 def room_reservation(request, room_id):
     if request.method == 'GET':
         room = Room.objects.get(pk=room_id)
+        reservations = Reservation.objects.filter(id=room_id)
+        if room.projector_avaibility:
+            projector = 'YES'
+        else:
+            projector = 'NO'
+        room = Room.objects.get(pk=room_id)
         today = datetime.today()
         today = today.strftime("%A %d %B %Y")
         return render(request, "conroom_reserve_app/room_reservation.html",
-                      context={"room": room, 'today': today})
+                      context={"room": room, 'today': today, 'projector': projector, 'reservations':reservations})
     if request.method == 'POST':
         room = Room.objects.get(pk=room_id)
         r_comment = request.POST.get('r_comment')
