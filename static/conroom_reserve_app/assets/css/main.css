@@ -82,10 +82,10 @@ input, select, textarea {
 		-ms-overflow-style: scrollbar;
 	}
 
-	@media screen and (max-width: 480px) {
+	@media screen and (max-width: 1080px) {
 
 		html, body {
-			min-width: 320px;
+			min-width: 640px;
 		}
 
 	}
@@ -1554,7 +1554,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 640px) {
 
 			.row {
 				display: flex;

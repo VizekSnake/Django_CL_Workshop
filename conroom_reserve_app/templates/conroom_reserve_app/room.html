@@ -30,7 +30,7 @@
         <ul>
             <li><a href="/crr">Avaibility</a></li>
             <li><a href="#cta">Reserve</a></li>
-            <li><a href="#cta">Add Room</a></li>
+            <li><a href="add">Add Room</a></li>
         </ul>
     </nav>
 
@@ -57,6 +57,29 @@
                     <td>{{ projector }}</td>
                 </tr>
             </table>
+            </br>
+            <table>
+                <thead>
+                <tr>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>OCCUPATION</td>
+                    <form method="GET" action="/reserve">
+                        {% for occupied_day in occupied %}
+                        {% if occupied_day == 'OCCUPIED'%}
+                        <td style="color:red">{{ occupied_day }}</td>
+                        {% else %}
+
+                        <td style="color:darkslategrey"><a href="reserve/{{room.id}}"/>{{ occupied_day }}</a></td>
+
+                        {% endif%}
+                        {% endfor %}
+                    </form>
+                </tr>
+            </table>
             <ul class="features">
                 <li>
                     <p><a href="generic.html" class="button primary">DELETE</a></p>
@@ -65,7 +88,7 @@
                     <p><a href="edit/{{ room.id }}" class="button primary">EDIT</a></p>
                 </li>
                 <li>
-                    <p><a href="generic.html" class="button">RESERVE</a></p>
+                    <p><a href="reserve/{{ room.id }}" class="button">RESERVE</a></p>
                 </li>
             </ul>
         </section>

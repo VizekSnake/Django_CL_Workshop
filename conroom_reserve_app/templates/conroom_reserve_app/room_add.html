@@ -39,8 +39,24 @@
         <!-- First Section -->
         <section id="first" class="main special">
             <header class="major">
-                <h2>Add new conference room</h2>
+                <h1>{{ exist }}</h1>
+                <h2>Add new conference room {{room.room_name}}</h2>
             </header>
+            <table>
+                <thead>
+                <tr>
+                    <th>ROOM</th>
+                    <th>CAPACITY</th>
+                    <th>IS PROJECTOR AVAIBLE?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ room.room_name }}</td>
+                    <td>{{ room.capacity }}</td>
+                    <td>{{ projector }}</td>
+                </tr>
+            </table>
             <form method="post" action="#">
                 {% csrf_token %}
                 <div class="row gtr-uniform">
@@ -53,10 +69,12 @@
                                    placeholder="Edit Capacity"/>
                         </div>
                         <div class="col-6 col-12-small">
-                            <input type="checkbox" id="p_avaible" name="p_avaible" checked>
-                            <label>Is there avaible a projector?</label>
+                            <input type="checkbox" id="p_avaible" name="p_avaible" {% if room.projector_availability %} checked {% endif %}>
+                            <label for="p_avaible">Is there avaible a projector?</label>
+                            <div class="form-check">
+      </div>
                             <div class="col-12">
-                                    <input type="submit" value="EDIT" class="primary"/>
+                                    <input type="submit" value="ADD" class="primary"/>
                             </div>
                         </div>
                     </div>

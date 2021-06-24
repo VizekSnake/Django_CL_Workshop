@@ -10,8 +10,8 @@
     <noscript>
         <link rel="stylesheet" href="{% static 'conroom_reserve_app/assets/css/noscript.css' %}"/>
         <title>Movie rooms</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     </noscript>
 </head>
 <body class="is-preload">
@@ -29,8 +29,7 @@
     <nav id="nav">
         <ul>
             <li><a href="#first">Avaibility</a></li>
-			<li><a href="#cta">Reserve</a></li>
-            <li><a href="#cta">Add Room</a></li>
+            <li><a href="add">Add Room</a></li>
         </ul>
     </nav>
 
@@ -41,30 +40,36 @@
         <section id="first" class="main special">
             <header class="major">
                 <h2>Availability</h2>
+                <h3>{{ vanish }}</h3>
                 <h3>For : {{today}}</h3>
             </header>
             <table>
                 <thead>
                 <tr>
-					<th>CONFERENCE ROOM ID</th>
-                    {% for day in reserv_days %}
+                    <th>CONFERENCE ROOM ID</th>
+                    {% for day in days_calendar %}
                     <th>{{day}}</th>
-                    {%endfor%}
+                    {% endfor %}
                 </tr>
                 </thead>
                 <tbody>
                 {% for room in rooms %}
                 <tr>
                     <td><a href="/crr/{{ room.id }}">{{ room.room_name }}</a></td>
+                    {% for day in days_calendar %}
+                    <td>
+                        {{status}}{{reservation_dates}}
+                    </td>
+                    {%endfor%}
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="edit/{{ room.id }}">EDIT</a></td>
-                    <td><a href="delete/{{ room.id }}">DELETE</a></td>
+                    <td><a href="/crr/reserve/{{ room.id }}">BOOK</a></td>
+                    <td><a href="crr/edit/{{ room.id }}">EDIT</a></td>
+                    <td><a href="crr/delete/{{ room.id }}">DELETE</a></td>
+
                 </tr>
                 {%endfor%}
             </table>

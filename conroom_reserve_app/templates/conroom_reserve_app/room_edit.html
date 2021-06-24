@@ -69,8 +69,10 @@
                                    placeholder="Edit Capacity"/>
                         </div>
                         <div class="col-6 col-12-small">
-                            <input type="checkbox" id="p_avaible" name="p_avaible" checked>
-                            <label>Is there avaible a projector?</label>
+                            <input type="checkbox" id="p_avaible" name="p_avaible" {% if room.projector_availability %} checked {% endif %}>
+                            <label for="p_avaible">Is there avaible a projector?</label>
+                            <div class="form-check">
+      </div>
                             <div class="col-12">
                                     <input type="submit" value="EDIT" class="primary"/>
                             </div>

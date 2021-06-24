@@ -10,3 +10,15 @@ class Room(models.Model):
 
     def __str__(self):
         return f'{self.room_name}'
+
+
+class Reservation(models.Model):
+    room_id = models.ForeignKey(Room, on_delete=models.CASCADE)
+    reservation_date = models.DateField()
+    comment = models.TextField(null=True)
+
+    def __str__(self):
+        return f'{self.reservation_date} {self.comment}'
+
+    class Meta:
+        unique_together = ('room_id', 'reservation_date',)
