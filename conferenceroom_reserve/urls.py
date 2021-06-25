@@ -26,7 +26,7 @@ urlpatterns = [
     # path('crr/', main_conf_reserve),
     re_path(r'^crr/(?P<room_id>\d+)/?$', room_conf_detail),
     re_path(r'^crr/edit/(?P<room_id>\d+)/?$', room_conf_edit),
-    path('crr/add', room_conf_add),
+    path('crr/add/', room_conf_add),
     re_path(r'^crr/reserve/(?P<room_id>\d+)/$',room_reservation),
     re_path(r'^crr/delete/(?P<room_id>\d+)/?$', room_conf_delete),
     path('crr/', RoomListView.as_view(), name='dashboard'),

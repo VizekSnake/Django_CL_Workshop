@@ -28,7 +28,7 @@
     <!-- Nav -->
     <nav id="nav">
         <ul>
-            <li><a href="#first">Avaibility</a></li>
+            <li><a href="/crr">Avaibility</a></li>
             <li><a href="add">Add Room</a></li>
         </ul>
     </nav>
@@ -56,10 +56,8 @@
                 {% for room in rooms %}
                 <tr>
                     <td><a href="/crr/{{ room.id }}">{{ room.room_name }}</a></td>
-                    {% for day in days_calendar %}
-                    <td>
-                        {{status}}{{reservation_dates}}
-                    </td>
+                    {%for reservation in reservation_list%}
+                    <td>{{reservation}}</td>
                     {%endfor%}
                     <td></td>
                     <td></td>
@@ -67,9 +65,8 @@
                     <td></td>
                     <td></td>
                     <td><a href="/crr/reserve/{{ room.id }}">BOOK</a></td>
-                    <td><a href="crr/edit/{{ room.id }}">EDIT</a></td>
-                    <td><a href="crr/delete/{{ room.id }}">DELETE</a></td>
-
+                    <td><a href="/crr/edit/{{ room.id }}">EDIT</a></td>
+                    <td><a href="/crr/delete/{{ room.id }}">DELETE</a></td>
                 </tr>
                 {%endfor%}
             </table>

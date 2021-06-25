@@ -29,7 +29,6 @@
     <nav id="nav">
         <ul>
             <li><a href="/crr">Avaibility</a></li>
-            <li><a href="#cta">Reserve</a></li>
             <li><a href="add">Add Room</a></li>
         </ul>
     </nav>
@@ -64,9 +63,12 @@
                 </tr>
                 </thead>
                 <tbody>
-
+<header class="major">
+                <h2>Occupation of conference room {{room.room_name}} for week</h2>
+            </header>
                 <tr>
-                    <td>OCCUPATION</td>
+
+
                     <form method="GET" action="/reserve">
                         {% for occupied_day in occupied %}
                         {% if occupied_day == 'OCCUPIED'%}
@@ -80,6 +82,12 @@
                     </form>
                 </tr>
             </table>
+            <h3>Recent reservations</h3>
+                {%for reservation in reservations%}
+                <ol>
+                    <li>{{reservation.room_id}} in {{reservation.reservation_date}} | COMMENTARY: {{reservation.comment}}</li>
+                </ol>
+                {%endfor%}
             <ul class="features">
                 <li>
                     <p><a href="generic.html" class="button primary">DELETE</a></p>
